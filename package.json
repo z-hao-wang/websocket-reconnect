@@ -1,0 +1,26 @@
+{
+  "name": "samplename",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+    "prettier": "node ./node_modules/prettier/bin-prettier.js --parser=typescript --single-quote --trailing-comma=all --write --print-width=120 'src/**/*.ts'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hao Wang",
+  "license": "MIT",
+  "dependencies": {
+    "events": "^3.0.0",
+    "ws": "^6.2.1"
+  },
+  "devDependencies": {
+    "@types/events": "^3.0.0",
+    "@types/ws": "^6.0.1",
+    "@types/lodash": "^4.14.123",
+    "prettier": "^1.16.4"
+  }
+}

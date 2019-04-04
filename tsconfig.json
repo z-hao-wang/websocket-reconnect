@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "sourceMap": false,
+    "lib": [ "es2015", "dom" ],
+    "noEmitOnError": true,
+    "target": "ES6",
+    "strict": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "declaration": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
+    "paths": {}
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+  ]
+}
