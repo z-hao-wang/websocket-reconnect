@@ -1,5 +1,5 @@
 {
-  "name": "ws-reconnect",
+  "name": "websocket-reconnect",
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/index.js",

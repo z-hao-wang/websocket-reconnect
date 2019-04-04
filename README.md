@@ -2,11 +2,13 @@
 
 This repo will create a websocket client that auto retry to reconnect to the sever
 It will also cache the messages that failed to send and send after reconnect success.
+
+Come with typescript support
 ```
-npm i ws-reconnect --save
+npm i websocket-reconnect --save
 
 import { WsReconnect } from '../src/WsReconnect';
-const ws = new WsReconnect();
+const ws = new WsReconnect({ reconnectDelay: 5000 });
 ws.open(`ws://${host}:${port}`);
 
 ws.on('open', function open() {
