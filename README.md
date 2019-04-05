@@ -1,5 +1,7 @@
-#websocket reconnect 
+# websocket reconnect 
+
 With typing and data caching
+
 ## Getting Started
 
 This repo will create a websocket client that auto retry to reconnect to the sever
