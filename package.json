@@ -1,6 +1,6 @@
 {
   "name": "websocket-reconnect",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -15,6 +15,7 @@
     "type": "git",
     "url": "https://github.com/z-hao-wang/websocket-reconnect.git"
   },
+  "keywords": ["nodejs", "websocket", "reconnect", "websocket reconnect", "typescript", "typing"],
   "author": "Hao Wang",
   "license": "MIT",
   "dependencies": {
