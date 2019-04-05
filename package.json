@@ -1,6 +1,6 @@
 {
   "name": "websocket-reconnect",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -10,6 +10,10 @@
     "tsc:watch": "tsc -w",
     "prettier": "node ./node_modules/prettier/bin-prettier.js --parser=typescript --single-quote --trailing-comma=all --write --print-width=120 'src/**/*.ts'",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/z-hao-wang/websocket-reconnect.git"
   },
   "author": "Hao Wang",
   "license": "MIT",

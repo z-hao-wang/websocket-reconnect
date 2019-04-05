@@ -1,9 +1,10 @@
-# Getting Started
+#websocket reconnect 
+With typing and data caching
+## Getting Started
 
 This repo will create a websocket client that auto retry to reconnect to the sever
 It will also cache the messages that failed to send and send after reconnect success.
 
-Come with typescript support
 ```
 npm i websocket-reconnect --save
 
