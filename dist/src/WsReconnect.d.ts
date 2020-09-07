@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import * as EventEmitter from 'events';
 export declare namespace WsReconnect {
     interface Options {
@@ -8,7 +9,7 @@ export declare class WsReconnect extends EventEmitter {
     private autoReconnectInterval;
     private url;
     private instance;
-    lastHeartBearTs?: Date;
+    protected lastHeartBeatTs?: Date;
     sendQueue: string[];
     constructor(options?: WsReconnect.Options);
     protected heartBeat(): void;

@@ -14,10 +14,10 @@ class WsReconnect extends EventEmitter {
         }
     }
     heartBeat() {
-        this.lastHeartBearTs = new Date();
+        this.lastHeartBeatTs = new Date();
     }
     getLastHeartBeat() {
-        return this.lastHeartBearTs;
+        return this.lastHeartBeatTs;
     }
     open(url) {
         this.url = url;
@@ -67,11 +67,14 @@ class WsReconnect extends EventEmitter {
     }
     send(data, option) {
         if (!this.instance) {
-            return console.error('socket instance is not initialized. must call open(url) first');
+            this.sendQueue.push(data);
+            this.emit('warn', 'socket instance is not initialized. must call open(url) first');
+            return;
         }
         if (this.instance.readyState !== 1) {
             this.sendQueue.push(data);
-            return console.warn('socket instance is not in ready state, retry when ready', this.instance.readyState);
+            this.emit('warn', 'socket instance is not in ready state, retry when ready streadyStateate=' + this.instance.readyState);
+            return;
         }
         try {
             this.instance.send(data, option);
@@ -91,7 +94,7 @@ class WsReconnect extends EventEmitter {
         this.emit('reconnect');
     }
     onopen() {
-        console.log('WsReconnect: open', this.url);
+        // console.log('WsReconnect: open', this.url);
         this.emit('open');
     }
     onmessage(data, flag, arg3, arg4, arg5, arg6) {
@@ -99,7 +102,7 @@ class WsReconnect extends EventEmitter {
         this.heartBeat();
     }
     onerror(e) {
-        console.error('WsReconnect: error', this.url, arguments);
+        // console.error('WsReconnect: error', this.url, arguments);
         this.emit('error', e);
     }
     onclose(e) {
