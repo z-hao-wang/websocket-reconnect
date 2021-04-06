@@ -84,7 +84,7 @@ class WsReconnect extends EventEmitter {
         }
     }
     reconnect(e) {
-        console.log(`WsReconnect: retry in ${this.autoReconnectInterval}ms`, e);
+        console.log(`WsReconnect: retry in ${this.autoReconnectInterval}ms ${this.url}`, e);
         this.instance && this.instance.removeAllListeners();
         this.instance = null;
         setTimeout(() => {
