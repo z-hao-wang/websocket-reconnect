@@ -19,9 +19,13 @@ class WsReconnect extends EventEmitter {
     getLastHeartBeat() {
         return this.lastHeartBeatTs;
     }
+    // support header when connecting ws.
+    setHeaders(headers) {
+        this.headers = headers;
+    }
     open(url) {
         this.url = url;
-        this.instance = new WebSocket(this.url);
+        this.instance = new WebSocket(this.url, undefined, this.headers);
         this.instance.on('open', () => {
             this.onopen();
             while (this.sendQueue.length > 0) {

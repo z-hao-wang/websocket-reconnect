@@ -13,6 +13,7 @@ export class WsReconnect extends EventEmitter {
   private instance: WebSocket | null = null;
   protected lastHeartBeatTs?: Date;
   sendQueue: string[] = [];
+  headers: any;
 
   constructor(options?: WsReconnect.Options) {
     super();
@@ -29,9 +30,14 @@ export class WsReconnect extends EventEmitter {
     return this.lastHeartBeatTs;
   }
 
+  // support header when connecting ws.
+  setHeaders(headers: any) {
+    this.headers = headers;
+  }
+
   open(url: string) {
     this.url = url;
-    this.instance = new WebSocket(this.url);
+    this.instance = new WebSocket(this.url, undefined, this.headers);
     this.instance.on('open', () => {
       this.onopen();
       while (this.sendQueue.length > 0) {
