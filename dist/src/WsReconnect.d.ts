@@ -11,11 +11,11 @@ export declare class WsReconnect extends EventEmitter {
     private instance;
     protected lastHeartBeatTs?: Date;
     sendQueue: string[];
-    headers: any;
+    options: any;
     constructor(options?: WsReconnect.Options);
     protected heartBeat(): void;
     getLastHeartBeat(): Date | undefined;
-    setHeaders(headers: any): void;
+    setConnectionOptions(options: any): void;
     open(url: string): void;
     close(): void;
     send(data: string, option?: any): void;
