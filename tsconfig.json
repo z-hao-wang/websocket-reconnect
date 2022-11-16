@@ -2,11 +2,12 @@
   "compilerOptions": {
     "module": "commonjs",
     "sourceMap": false,
-    "lib": [ "es2015", "dom" ],
+    "lib": [ "es2020"],
     "noEmitOnError": true,
     "target": "ES6",
     "strict": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "skipLibCheck": true,
     "baseUrl": "./",
     "declaration": true,
@@ -16,6 +17,7 @@
   },
   "exclude": [
     "node_modules",
+    "example",
     "dist",
   ]
 }

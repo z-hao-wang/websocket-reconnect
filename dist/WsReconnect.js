@@ -1,8 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const WebSocket = require("ws");
-const EventEmitter = require("events");
-class WsReconnect extends EventEmitter {
+exports.WsReconnect = void 0;
+const ws_1 = __importDefault(require("ws"));
+const events_1 = __importDefault(require("events"));
+class WsReconnect extends events_1.default {
     constructor(options) {
         super();
         this.autoReconnectInterval = 5 * 1000; // ms
@@ -25,7 +29,7 @@ class WsReconnect extends EventEmitter {
     }
     open(url) {
         this.url = url;
-        this.instance = new WebSocket(this.url, undefined, this.options);
+        this.instance = new ws_1.default(this.url, undefined, this.options);
         this.instance.on('open', () => {
             this.onopen();
             while (this.sendQueue.length > 0) {

@@ -1,5 +1,5 @@
-import * as WebSocket from 'ws';
-import * as EventEmitter from 'events';
+import WebSocket from 'ws';
+import EventEmitter from 'events';
 
 export namespace WsReconnect {
   export interface Options {
