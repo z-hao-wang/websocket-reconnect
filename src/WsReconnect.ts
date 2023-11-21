@@ -107,7 +107,7 @@ export class WsReconnect extends EventEmitter {
     this.instance && this.instance.removeAllListeners();
     this.instance = null;
     setTimeout(() => {
-      console.log(`WsReconnect: reconnecting... in ${this.autoReconnectInterval}ms`);
+      console.log(`WsReconnect: reconnecting... in ${this.autoReconnectInterval}ms ${this.url}`);
       this.open(this.url);
     }, this.autoReconnectInterval);
     this.emit('reconnect');
