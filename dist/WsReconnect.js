@@ -43,7 +43,7 @@ class WsReconnect extends events_1.default {
         this.instance.on('close', (e) => {
             switch (e.code) {
                 case 1000: // CLOSE_NORMAL
-                    console.log('WebSocket: normally closed');
+                    console.log(`WebSocket: normally closed ${this.url}`);
                     break;
                 default:
                     // Abnormal closure
@@ -62,7 +62,7 @@ class WsReconnect extends events_1.default {
         });
     }
     close() {
-        console.log(`WsReconnect: closing connection normally`);
+        console.log(`WsReconnect: closing connection normally ${this.url}`);
         if (!this.instance)
             return;
         try {
@@ -70,18 +70,18 @@ class WsReconnect extends events_1.default {
             this.instance.close();
         }
         catch (e) {
-            console.error(`WsReconnect: closing err`, e);
+            console.error(`WsReconnect: closing err ${this.url}`, e);
         }
     }
     send(data, option) {
         if (!this.instance) {
             this.sendQueue.push(data);
-            this.emit('warn', 'socket instance is not initialized. must call open(url) first');
+            this.emit('warn', `socket instance is not initialized. must call open(${this.url}) first`);
             return;
         }
         if (this.instance.readyState !== 1) {
             this.sendQueue.push(data);
-            this.emit('warn', 'socket instance is not in ready state, retry when ready streadyStateate=' + this.instance.readyState);
+            this.emit('warn', `socket instance is not in ready state, retry when ready ${this.url} readyState=` + this.instance.readyState);
             return;
         }
         try {
@@ -96,7 +96,7 @@ class WsReconnect extends events_1.default {
         this.instance && this.instance.removeAllListeners();
         this.instance = null;
         setTimeout(() => {
-            console.log(`WsReconnect: reconnecting... in ${this.autoReconnectInterval}ms`);
+            console.log(`WsReconnect: reconnecting... in ${this.autoReconnectInterval}ms ${this.url}`);
             this.open(this.url);
         }, this.autoReconnectInterval);
         this.emit('reconnect');
@@ -114,7 +114,7 @@ class WsReconnect extends events_1.default {
         this.emit('error', e);
     }
     onclose(e) {
-        console.log('WsReconnect: close', arguments);
+        console.log(`WsReconnect: close ${this.url}`, arguments);
         this.emit('close', e);
     }
 }

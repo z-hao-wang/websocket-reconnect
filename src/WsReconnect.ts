@@ -51,7 +51,7 @@ export class WsReconnect extends EventEmitter {
     this.instance.on('close', (e: any) => {
       switch (e.code) {
         case 1000: // CLOSE_NORMAL
-          console.log('WebSocket: normally closed');
+          console.log(`WebSocket: normally closed ${this.url}`);
           break;
         default:
           // Abnormal closure
@@ -71,27 +71,27 @@ export class WsReconnect extends EventEmitter {
   }
 
   close() {
-    console.log(`WsReconnect: closing connection normally`);
+    console.log(`WsReconnect: closing connection normally ${this.url}`);
     if (!this.instance) return;
     try {
       this.instance.removeAllListeners();
       this.instance.close();
     } catch (e) {
-      console.error(`WsReconnect: closing err`, e);
+      console.error(`WsReconnect: closing err ${this.url}`, e);
     }
   }
 
   send(data: string, option?: any) {
     if (!this.instance) {
       this.sendQueue.push(data);
-      this.emit('warn', 'socket instance is not initialized. must call open(url) first');
+      this.emit('warn', `socket instance is not initialized. must call open(${this.url}) first`);
       return;
     }
     if (this.instance.readyState !== 1) {
       this.sendQueue.push(data);
       this.emit(
         'warn',
-        'socket instance is not in ready state, retry when ready streadyStateate=' + this.instance.readyState,
+        `socket instance is not in ready state, retry when ready ${this.url} readyState=` + this.instance.readyState,
       );
       return;
     }
@@ -129,7 +129,7 @@ export class WsReconnect extends EventEmitter {
   }
 
   private onclose(e: any) {
-    console.log('WsReconnect: close', arguments);
+    console.log(`WsReconnect: close ${this.url}`, arguments);
     this.emit('close', e);
   }
 }

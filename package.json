@@ -1,6 +1,6 @@
 {
   "name": "websocket-reconnect",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,6 +34,7 @@
     "@types/lodash": "^4.14.123",
     "@types/ws": "^6.0.1",
     "prettier": "^1.16.4",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "typescript": "^5.3.3"
   }
 }
