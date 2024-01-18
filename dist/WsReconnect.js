@@ -110,7 +110,7 @@ class WsReconnect extends events_1.default {
         this.heartBeat();
     }
     onerror(e) {
-        // console.error('WsReconnect: error', this.url, arguments);
+        console.error('WsReconnect: error', this.url, e);
         this.emit('error', e);
     }
     onclose(e) {

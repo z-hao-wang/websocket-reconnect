@@ -124,7 +124,7 @@ export class WsReconnect extends EventEmitter {
   }
 
   private onerror(e: any) {
-    // console.error('WsReconnect: error', this.url, arguments);
+    console.error('WsReconnect: error', this.url, e);
     this.emit('error', e);
   }
 
